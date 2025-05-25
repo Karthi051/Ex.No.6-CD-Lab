@@ -1,7 +1,8 @@
 # Ex.No:6
 # IMPLEMENTATION OF THE BACK END OF THE COMPILER 
-## Register Number:212223230101
-## Date:05/05/2025
+## Name: KARTHIKEYAN K
+## Register Number : 212223230101
+## Date: 28/04/2024
 ## AIM:
 To write a program to implement the back end of the compiler.
 ## ALGORITHM:
@@ -12,77 +13,44 @@ To write a program to implement the back end of the compiler.
 5. Target code for the given statement is produced.
 6. Stop the program.
 ## PROGRAM:
-# Program.c
-
-```
+ ```
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 #include <ctype.h>
+#include <stdlib.h>
 
 int main() {
-    char line[100], var[10], op1[10], op2[10], res[10], op;
-    char filename[50];
-    FILE *fp;
-    int reg = 0;
+int i = 2, j = 0, k = 2, k1 = 0; char ip[10], kk[10];
+FILE *fp;
 
-    printf("Enter the filename of the intermediate code: ");
-    scanf("%s", filename);
+printf("Enter the filename of the intermediate code: "); scanf("%s", kk);
 
-    fp = fopen(filename, "r");
-    if (fp == NULL) {
-        printf("Error: Could not open file.\n");
-        return 1;
-    }
+fp = fopen(kk, "r"); if (fp == NULL) {
+printf("\nError in opening the file\n"); return 1;
+}
+printf("\nStatement\tTarget Code\n\n"); while (fscanf(fp, "%s", ip) != EOF) {
+printf("%s\tMOV %c,R%d SUB ", ip, ip[i + k], j);
 
-    printf("\nIntermediate Code:\n\n");
+if (ip[i + 1] == '+')
+printf("ADD "); else
+printf("SUB ");
 
-    while (fgets(line, sizeof(line), fp)) {
-        printf("\t\t%s", line);
-    }
+if (islower(ip[i])) printf("%c,R%d\n", ip[i + k1], j);
+else
+printf("%c,%c\n", ip[i], ip[i + 2]);
 
-    rewind(fp);
+j++;
+k1 = 2;
+k = 0;
+}
 
-    printf("\n\n\tStatement\t\tTarget Code\n\n");
+fclose(fp);
 
-    while (fgets(line, sizeof(line), fp)) {
-        // Remove newline if exists
-        line[strcspn(line, "\n")] = 0;
-
-        // Example format: t1 = a + b
-        if (sscanf(line, "%s = %s %c %s", res, op1, &op, op2) == 4) {
-            printf("\t%s\t\tMOV %s, R%d\n", line, op2, reg);
-            printf("\t\t\t\t");
-
-            if (op == '+')
-                printf("ADD ");
-            else if (op == '-')
-                printf("SUB ");
-            else if (op == '*')
-                printf("MUL ");
-            else if (op == '/')
-                printf("DIV ");
-            else
-                printf("OP? ");
-
-            printf("%s, R%d\n\n", op1, reg);
-            reg++;
-        }
-    }
-
-    fclose(fp);
-    return 0;
+return 0;
 }
 ```
-# k.txt
-```
-t1 = a + b
-t2 = t1 - c
 
-```
 ## OUTPUT:
-
-![image](https://github.com/user-attachments/assets/ec9445e1-a453-4d88-8160-1f47465a9ebd)
+![image](https://github.com/user-attachments/assets/fe767e70-9b16-49dc-a62b-121b7ff8a197)
 
 
 ## RESULT:
